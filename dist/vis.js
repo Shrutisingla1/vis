@@ -285,7 +285,7 @@ exports.assignAllKeys = function (obj, value) {
  * @param {object} a  target object
  * @param {object} b  source object
  * @param {string} prop  name of property to copy to a
- * @param {boolean} allowDeletion  if true, delete property in a if explicitly set to null in b 
+ * @param {boolean} allowDeletion  if true, delete property in a if explicitly set to null in b
  * @private
  */
 function copyOrDelete(a, b, prop, allowDeletion) {
@@ -309,7 +309,7 @@ function copyOrDelete(a, b, prop, allowDeletion) {
  *
  * @param {object} a
  * @param {object} b
- * @param {boolean} [allowDeletion=false]  if true, delete properties in a that are explicitly set to null in b 
+ * @param {boolean} [allowDeletion=false]  if true, delete properties in a that are explicitly set to null in b
  */
 exports.fillIfDefined = function (a, b) {
   var allowDeletion = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
@@ -389,7 +389,7 @@ exports.selectiveExtend = function (props, a, b) {
  * @param {Array.<string>} props names of first-level properties to copy over
  * @param {object} a  target object
  * @param {object} b  source object
- * @param {boolean} [allowDeletion=false]  if true, delete property in a if explicitly set to null in b 
+ * @param {boolean} [allowDeletion=false]  if true, delete property in a if explicitly set to null in b
  * @returns {Object} a
  */
 exports.selectiveDeepExtend = function (props, a, b) {
@@ -423,9 +423,9 @@ exports.selectiveDeepExtend = function (props, a, b) {
 };
 
 /**
- * Extend object `a` with properties of object `b`, ignoring properties which are explicitly 
+ * Extend object `a` with properties of object `b`, ignoring properties which are explicitly
  * specified to be excluded.
- * 
+ *
  * The properties of `b` are considered for copying.
  * Properties which are themselves objects are are also extended.
  * Only properties with defined values are copied
@@ -433,20 +433,20 @@ exports.selectiveDeepExtend = function (props, a, b) {
  * @param {Array.<string>} propsToExclude  names of properties which should *not* be copied
  * @param {Object}                      a  object to extend
  * @param {Object}                      b  object to take properties from for extension
- * @param {boolean} [allowDeletion=false]  if true, delete properties in a that are explicitly set to null in b 
+ * @param {boolean} [allowDeletion=false]  if true, delete properties in a that are explicitly set to null in b
  * @return {Object} a
  */
 exports.selectiveNotDeepExtend = function (propsToExclude, a, b) {
   var allowDeletion = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
 
   // TODO: add support for Arrays to deepExtend
-  // NOTE: array properties have an else-below; apparently, there is a problem here. 
+  // NOTE: array properties have an else-below; apparently, there is a problem here.
   if (Array.isArray(b)) {
     throw new TypeError('Arrays are not supported by deepExtend');
   }
 
   for (var prop in b) {
-    if (!b.hasOwnProperty(prop)) continue; // Handle local properties only 
+    if (!b.hasOwnProperty(prop)) continue; // Handle local properties only
     if (propsToExclude.indexOf(prop) !== -1) continue; // In exclusion list, skip
 
     if (b[prop] && b[prop].constructor === Object) {
@@ -3633,7 +3633,7 @@ var Validator = function () {
         // we do not look deeper into the object.
         is_object = Validator.getType(options[option]) === 'object';
       } else {
-        // Since all options in the reference are objects, we can check whether 
+        // Since all options in the reference are objects, we can check whether
         // they are supposed to be the object to look for the __type__ field.
         // if this is an object, we check if the correct type has been supplied to account for shorthand options.
       }
@@ -5048,7 +5048,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 /**
  * used in Core to convert the options into a volatile variable
- * 
+ *
  * @param {function} moment
  * @param {Object} body
  * @param {Array | Object} hiddenDates
@@ -5911,7 +5911,7 @@ Item.prototype._repaintOnItemUpdateTimeTooltip = function (anchor) {
     var tooltipOffset = 50; // TODO: should be tooltip height (depends on template)
     var scrollTop = this.parent.itemSet.body.domProps.scrollTop;
 
-    // TODO: this.top for orientation:true is actually the items distance from the bottom... 
+    // TODO: this.top for orientation:true is actually the items distance from the bottom...
     // (should be this.bottom)
     var itemDistanceFromTop;
     if (this.options.orientation.item == 'top') {
@@ -7992,7 +7992,7 @@ var Node = function () {
       var groupObj = groupList.get(group);
 
       // Skip merging of group font options into parent; these are required to be distinct for labels
-      // TODO: It might not be a good idea either to merge the rest of the options, investigate this. 
+      // TODO: It might not be a good idea either to merge the rest of the options, investigate this.
       util.selectiveNotDeepExtend(['font'], parentOptions, groupObj);
 
       // the color object needs to be completely defined.
@@ -8109,7 +8109,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'd
  * Definitions for param's in jsdoc.
  * These are more or less global within Network. Putting them here until I can figure out
  * where to really put them
- * 
+ *
  * @typedef {string|number} Id
  * @typedef {Id} NodeId
  * @typedef {Id} EdgeId
@@ -8159,7 +8159,7 @@ var ComponentUtil = function () {
      *
      * @param {string}  subOption  option within object 'chosen' to consider; either 'node', 'edge' or 'label'
      * @param {Object}  pile       array of options objects to consider
-     * 
+     *
      * @return {boolean|function}  value for passed subOption of 'chosen' to use
      */
     value: function choosify(subOption, pile) {
@@ -8209,7 +8209,7 @@ var ComponentUtil = function () {
         };
 
         if (rotationPoint.angle !== 0) {
-          // In order to get the coordinates the same, you need to 
+          // In order to get the coordinates the same, you need to
           // rotate in the reverse direction
           var angle = -rotationPoint.angle;
 
@@ -8687,7 +8687,7 @@ Range.prototype.stopRolling = function () {
  *                                    function is 'easeInOutQuad'.
  *                              {boolean} [byUser=false]
  *                              {Event}  event  Mouse event
- * @param {Function} callback     a callback function to be executed at the end of this function  
+ * @param {Function} callback     a callback function to be executed at the end of this function
  * @param {Function} frameCallback    a callback function executed each frame of the range animation.
  *                                    The callback will be passed three parameters:
  *                                    {number} easeCoefficient    an easing coefficent
@@ -9179,7 +9179,7 @@ Range.prototype._onTouch = function (event) {
   this.scaleOffset = 0;
   this.deltaDifference = 0;
   // Disable the browser default handling of this event.
-  util.preventDefault(event);
+  // util.preventDefault(event);
 };
 
 /**
@@ -9620,7 +9620,9 @@ Core.prototype._create = function (container) {
 
     // prevent scrolling when zoomKey defined or activated
     if (!this.options.zoomKey || event[this.options.zoomKey]) return;
-
+    if(event.target.className.indexOf('vis') == -1 || (Math.abs(deltaY) >= Math.abs(deltaX))){
+        return;
+    }
     // Prevent default actions caused by mouse wheel
     // (else the page and timeline both scroll)
     event.preventDefault();
@@ -12902,7 +12904,7 @@ RangeItem.prototype.redraw = function (returnQueue) {
   // append DOM to parent DOM
   this._appendDomElement.bind(this),
 
-  // update dirty DOM 
+  // update dirty DOM
   this._updateDirtyDomComponents.bind(this), function () {
     if (this.dirty) {
       sizes = this._getDomComponentsSizes.bind(this)();
@@ -14169,7 +14171,7 @@ var CircleImageBase = function (_NodeBase) {
      * Set the images for this node.
      *
      * The images can be updated after the initial setting of options;
-     * therefore, this method needs to be reentrant. 
+     * therefore, this method needs to be reentrant.
      *
      * For correct working in error cases, it is necessary to properly set
      * field 'nodes.brokenImage' in the options.
@@ -14931,7 +14933,7 @@ var Edge = function () {
       }
     }
 
-    /** 
+    /**
      * Determine the rotation point, if any.
      *
      * @param {CanvasRenderingContext2D} [ctx] if passed, do a recalculation of the label size
@@ -16442,7 +16444,7 @@ var OPTIONKEYS = ['width', 'height', 'filterLabel', 'legendLabel', 'xLabel', 'yL
 /**
  * Field names in the options hash which are of relevance to the user.
  *
- * Same as OPTIONKEYS, but internally these fields are stored with 
+ * Same as OPTIONKEYS, but internally these fields are stored with
  * prefix 'default' in the name.
  */
 var PREFIXEDOPTIONKEYS = ['xBarWidth', 'yBarWidth', 'valueMin', 'valueMax', 'xMin', 'xMax', 'xStep', 'yMin', 'yMax', 'yStep', 'zMin', 'zMax', 'zStep'];
@@ -16501,11 +16503,11 @@ function prefixFieldName(prefix, fieldName) {
  * Forcibly copy fields from src to dst in a controlled manner.
  *
  * A given field in dst will always be overwitten. If this field
- * is undefined or not present in src, the field in dst will 
+ * is undefined or not present in src, the field in dst will
  * be explicitly set to undefined.
- * 
+ *
  * The intention here is to be able to reset all option fields.
- * 
+ *
  * Only the fields mentioned in array 'fields' will be handled.
  *
  * @param {object} src
@@ -16553,8 +16555,8 @@ function safeCopy(src, dst, fields, prefix) {
 /**
  * Initialize dst with the values in src.
  *
- * src is the hash with the default values. 
- * A reference DEFAULTS to this hash is stored locally for 
+ * src is the hash with the default values.
+ * A reference DEFAULTS to this hash is stored locally for
  * further handling.
  *
  * For now, dst is assumed to be a Graph3d instance.
@@ -17022,7 +17024,7 @@ var DataView = __webpack_require__(12);
 /**
  * @class Filter
  *
- * @param {DataGroup} dataGroup the data group 
+ * @param {DataGroup} dataGroup the data group
  * @param {number}  column             The index of the column to be filtered
  * @param {Graph3d} graph              The graph
  */
@@ -19903,14 +19905,14 @@ exports.stack = function (items, margin, force) {
 };
 
 /**
- * Adjust vertical positions of the items within a single subgroup such that they 
+ * Adjust vertical positions of the items within a single subgroup such that they
  * don't overlap each other.
  * @param {Item[]} items
  *            All items withina subgroup
  * @param {{item: {horizontal: number, vertical: number}, axis: number}} margin
  *            Margins between items and between items and the axis.
  * @param {subgroup} subgroup
- *            The subgroup that is being stacked 
+ *            The subgroup that is being stacked
  */
 exports.substack = function (items, margin, subgroup) {
   for (var i = 0; i < items.length; i++) {
@@ -20034,7 +20036,7 @@ exports.stackSubgroups = function (items, margin, subgroups) {
  * @param {{item: {horizontal: number, vertical: number}, axis: number}} margin
  *            Margins between items and between items and the axis.
  * @param {subgroups[]} subgroups
- *            All subgroups 
+ *            All subgroups
  */
 exports.stackSubgroupsWithInnerStack = function (subgroupItems, margin, subgroups) {
   var doSubStack = false;
@@ -24643,8 +24645,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'd
  * ====
  *
  * For label handling, this is an incomplete implementation. From docs (quote #3015):
- * 
- * > the escape sequences "\n", "\l" and "\r" divide the label into lines, centered, 
+ *
+ * > the escape sequences "\n", "\l" and "\r" divide the label into lines, centered,
  * > left-justified, and right-justified, respectively.
  *
  * Source: http://www.graphviz.org/content/attrs#kescString
@@ -25743,7 +25745,7 @@ var Images = function () {
         value: function load(url, brokenUrl) {
             var _this = this;
 
-            //Try and get the image from the cache, if successful then return the cached image   
+            //Try and get the image from the cache, if successful then return the cached image
             var cachedImage = this.images[url];
             if (cachedImage) return cachedImage;
 
@@ -25754,7 +25756,7 @@ var Images = function () {
             // Also, there will be multiple loads of the same image.
             this.images[url] = img;
 
-            //Subscribe to the event that is raised if the image loads successfully 
+            //Subscribe to the event that is raised if the image loads successfully
             img.image.onload = function () {
                 // Properly init the cached item and then request a redraw
                 _this._fixImageCoordinates(img.image);
@@ -25897,7 +25899,7 @@ var Label = function () {
   (0, _createClass3['default'])(Label, [{
     key: 'setOptions',
     value: function setOptions(options) {
-      this.elementOptions = options; // Reference to the options of the parent Node-instance 
+      this.elementOptions = options; // Reference to the options of the parent Node-instance
 
       this.initFontOptions(options.font);
 
@@ -26073,7 +26075,7 @@ var Label = function () {
     /**
      * Add the font members of the passed list of option objects to the pile.
      *
-     * @param {Pile} dstPile  pile of option objects add to 
+     * @param {Pile} dstPile  pile of option objects add to
      * @param {Pile} srcPile  pile of option objects to take font options from
      * @private
      */
@@ -26129,7 +26131,7 @@ var Label = function () {
         }
 
         util.forEach(fontOptions, function (opt, name) {
-          if (opt === undefined) return; // multi-font option need not be present 
+          if (opt === undefined) return; // multi-font option need not be present
           if (ret.hasOwnProperty(name)) return; // Keep first value we encounter
 
           if (multiFontStyle.indexOf(name) !== -1) {
@@ -26334,7 +26336,7 @@ var Label = function () {
      * @param {number} x
      * @param {number} y
      * @param {string} [baseline='middle']
-     * @param {number} viewFontSize 
+     * @param {number} viewFontSize
      * @private
      */
 
@@ -26570,7 +26572,7 @@ var Label = function () {
         }
 
         if (fontOptions[mod][option] !== undefined) {
-          // Grumbl leaving out test on undefined equals false for "" 
+          // Grumbl leaving out test on undefined equals false for ""
           return fontOptions[mod][option];
         } else {
           // Take from parent font option
@@ -27493,7 +27495,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'd
 
 /**
  * @typedef {{x:number, y:number}} Point
- * 
+ *
  * A point in view-coordinates.
  */
 
@@ -27660,7 +27662,7 @@ var Bar = function () {
             {x:0, y:0.5},
             {x:0, y:-0.5}
           ];
-      
+
           EndPoint.transform(points, arrowData);
           ctx.beginPath();
           ctx.moveTo(points[0].x, points[0].y);
@@ -34716,8 +34718,8 @@ Graph3d.DEFAULTS = {
   verticalRatio: 0.5, // 0.1 to 1.0, where 1.0 results in a 'cube'
 
   dotSizeRatio: 0.02, // size of the dots as a fraction of the graph width
-  dotSizeMinFraction: 0.5, // size of min-value dot as a fraction of dotSizeRatio	
-  dotSizeMaxFraction: 2.5, // size of max-value dot as a fraction of dotSizeRatio	
+  dotSizeMinFraction: 0.5, // size of min-value dot as a fraction of dotSizeRatio
+  dotSizeMaxFraction: 2.5, // size of max-value dot as a fraction of dotSizeRatio
 
   showAnimationControls: autoByDefault,
   animationInterval: 1000, // milliseconds
@@ -37352,7 +37354,7 @@ DataGroup.prototype.initializeData = function (graph3d, rawData, style) {
 /**
  * Collect the range settings for the given data column.
  *
- * This internal method is intended to make the range 
+ * This internal method is intended to make the range
  * initalization more generic.
  *
  * TODO: if/when combined settings per axis defined, get rid of this.
@@ -37882,7 +37884,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
     // target in a singleton
     hammer.on('hammer.input', function (event) {
       if (_options.preventDefault === true || (_options.preventDefault === event.pointerType)) {
-        event.preventDefault();
+        // event.preventDefault();
       }
       if (event.isFirst) {
         _firstTarget = event.target;
@@ -41197,7 +41199,7 @@ Timeline.prototype.focus = function (id, options) {
       // Double check we ended at the proper scroll position
       setFinalVerticalPosition();
 
-      // Let the redraw settle and finalize the position.      
+      // Let the redraw settle and finalize the position.
       setTimeout(setFinalVerticalPosition, 100);
     };
 
@@ -44625,7 +44627,7 @@ var LabelSplitter = function () {
   /**
    * @param {CanvasRenderingContext2D} ctx Canvas rendering context
    * @param {Label} parent reference to the Label instance using current instance
-   * @param {boolean} selected 
+   * @param {boolean} selected
    * @param {boolean} hover
    */
   function LabelSplitter(ctx, parent, selected, hover) {
@@ -44676,7 +44678,7 @@ var LabelSplitter = function () {
    *
    * This might not be the best way to do it, but this is as it has been working till now.
    * In order not to break existing functionality, for the time being this behaviour will
-   * be retained in any code changes. 
+   * be retained in any code changes.
    *
    * @param {string} text  text to split
    * @returns {Array<line>}
@@ -45069,9 +45071,9 @@ var LabelSplitter = function () {
     }
 
     /**
-     * Determine the longest part of the sentence which still fits in the 
+     * Determine the longest part of the sentence which still fits in the
      * current max width.
-     * 
+     *
      * @param {Array} words  Array of strings signifying a text lines
      * @return {number}      index of first item in string making string go over max
      * @private
@@ -45098,7 +45100,7 @@ var LabelSplitter = function () {
     /**
      * Determine the longest part of the string which still fits in the
      * current max width.
-     * 
+     *
      * @param {Array} words Array of strings signifying a text lines
      * @return {number} index of first item in string making string go over max
      */
@@ -45118,13 +45120,13 @@ var LabelSplitter = function () {
 
     /**
      * Split the passed text into lines, according to width constraint (if any).
-     * 
+     *
      * The method assumes that the input string is a single line, i.e. without lines break.
      *
      * This method retains spaces, if still present (case `font.multi: false`).
      * A space which falls on an internal line break, will be replaced by a newline.
      * There is no special handling of tabs; these go along with the flow.
-     * 
+     *
      * @param {string} str
      * @param {string} [mod='normal']
      * @param {boolean} [appendLast=false]
@@ -45336,7 +45338,7 @@ var LabelAccumulator = function () {
      * Determine and set the heights of all the lines currently contained in this instance
      *
      * Note that width has already been set.
-     * 
+     *
      * @private
      */
 
@@ -45366,7 +45368,7 @@ var LabelAccumulator = function () {
 
     /**
      * Determine the full size of the label text, as determined by current lines and blocks
-     * 
+     *
      * @private
      */
 
@@ -45390,7 +45392,7 @@ var LabelAccumulator = function () {
 
     /**
      * Remove all empty blocks and empty lines we don't need
-     * 
+     *
      * This must be done after the width/height determination,
      * so that these are set properly for processing here.
      *
@@ -50594,7 +50596,7 @@ Member `network.clustering` contains the following items:
 Due to nesting of clusters, these members can contain cluster nodes and edges as well.
 
 The important thing to note here, is that the clustered nodes and edges also
-appear in the members of the cluster nodes. For data update, it is therefore 
+appear in the members of the cluster nodes. For data update, it is therefore
 important to scan these lists as well as the cluster nodes.
 
 
@@ -50605,7 +50607,7 @@ A cluster node has the following extra fields:
 - `isCluster : true` - indication that this is a cluster node
 - `containedNodes`   - hash of nodes contained in this cluster
 - `containedEdges`   - same for edges
-- `edges`            - array of cluster edges for this node 
+- `edges`            - array of cluster edges for this node
 
 
 **NOTE:**
@@ -51361,7 +51363,7 @@ var ClusterEngine = function () {
         return;
       }
 
-      // main body 
+      // main body
       var containedNodes = clusterNode.containedNodes;
       var containedEdges = clusterNode.containedEdges;
 
@@ -51949,7 +51951,7 @@ var ClusterEngine = function () {
         }
       });
 
-      // Cluster nodes can also contain edges which are not clustered, 
+      // Cluster nodes can also contain edges which are not clustered,
       // i.e. nodes 1-2 within cluster with an edge in between.
       // So the cluster nodes also need to be scanned for invalid edges
       eachClusterNode(function (clusterNode) {
@@ -52051,7 +52053,7 @@ var ClusterEngine = function () {
         } else {
           // This should not be happening, the state should
           // be properly updated at this point.
-          // 
+          //
           // If it *is* reached during normal operation, then we have to implement
           // undo clustering for this edge here.
           throw new Error('remove edge from clustering not implemented!');
@@ -55981,7 +55983,7 @@ var HierarchicalStatus = function () {
     this.levels = {}; // hierarchy level per node id
     this.distributionIndex = {}; // The position of the node in the level sorting order, per node id.
 
-    this.isTree = false; // True if current network is a formal tree 
+    this.isTree = false; // True if current network is a formal tree
     this.treeIndex = -1; // Highest tree id in current network.
   }
 
@@ -57972,7 +57974,7 @@ var DirectionInterface = function () {
     }
 
     /**
-     * Add an offset to the unfixed coordinate of the given node. 
+     * Add an offset to the unfixed coordinate of the given node.
      *
      * @param {NodeId} nodeId Id of the node to adjust
      * @param {number} diff Offset to add to the unfixed coordinate
