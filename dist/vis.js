@@ -19538,6 +19538,7 @@ ItemSet.prototype._onDropObjectOnItem = function (event) {
   var step = this.body.util.getStep();
   var end;
   var item = this.itemFromTarget(event);
+	objectData._newStart = start;
   this.options.onDropObjectOnItem(objectData, item);
 };
 
